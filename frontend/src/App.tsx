@@ -1,4 +1,5 @@
-import { useState, type KeyboardEvent } from 'react';
+import { useState } from 'react';
+import led from './assets/led.png';
 import './App.css'
 
 function App() {
@@ -19,12 +20,19 @@ function App() {
     console.log(response);
   }
 
+  function handleClick(e: React.MouseEvent) {
+    alert("Led button pressed!");
+  }
+
   return (
     <div className='main'>
       <h1>AI RC Robot</h1>
       {error && <h2 style={{color: 'red'}}>{error}</h2>}
-      <img className='live-feed' width={500} height={300} src='http://localhost:8000/api/test/' alt='Failed to get video feed!'/>
-      <button className='control-btn' onKeyDown={handleKeyDown}>Operate</button>
+      {/* <img className='live-feed' width={500} height={300} src='http://localhost:8000/api/test/' alt='Failed to get video feed!'/> */}
+      <div>
+        <button className='control-btn' onKeyDown={handleKeyDown}>Operate</button>
+        <img onClick={handleClick} className='led-img' width={25} height={25} src={led}></img>
+      </div>
     </div>
   )
 }

@@ -10,6 +10,10 @@
   margin: 10px;
 }
 
+.led-img {
+  justify-self: center;
+}
+
 .control-btn {
   margin: 10px;
   height: 200px;
