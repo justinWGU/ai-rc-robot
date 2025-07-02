@@ -1,0 +1,19 @@
+.main {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+}
+
+.live-feed {
+  border: 2px;
+  border-style: solid;
+  margin: 10px;
+}
+
+.control-btn {
+  margin: 10px;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  justify-self: center;
+}

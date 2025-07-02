@@ -1,40 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useState, type KeyboardEvent } from 'react';
 import './App.css'
 
 function App() {
-  // const [data, setData] = useState<any>();
-  // const [error, setError] = useState<any>();
+  const [error, setError] = useState<string>('');
 
-
-  // async function getData() {
-  //   try {
-  //     const url = 'http://localhost:8000/api/test/'
-  //     const response: Response = await fetch(url);
-  //     console.log("Response: ", response);
-  //     if (response.ok) {
-  //       const result: any = await response.json();
-  //       setData(result);
-  //     } 
-  //     else {
-  //       setError("Response from server not ok");
-  //     }
-  //   } catch(err) {
-  //       setError("Response from server ok, but other error occurred.")
-  //       console.log(err);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   setTimeout(getData, 2000);
-  // });
-
+  async function handleKeyDown(e: React.KeyboardEvent) {
+    const pressedKey: string = e.code;
+    const url: string = 'http://localhost:8000/api/rotate-camera/';
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+    });
+    // send post request w/ given key press
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify({ command: pressedKey }),
+    });
+    console.log(response);
+  }
 
   return (
-    <>
+    <div className='main'>
       <h1>AI RC Robot</h1>
-      {/* {error && <h2 style={{color: 'red'}}>{error}</h2>} */}
-      <img width={250} height={200} src='http://localhost:8000/api/test/'></img>
-    </>
+      {error && <h2 style={{color: 'red'}}>{error}</h2>}
+      <img className='live-feed' width={500} height={300} src='http://localhost:8000/api/test/' alt='Failed to get video feed!'/>
+      <button className='control-btn' onKeyDown={handleKeyDown}>Operate</button>
+    </div>
   )
 }
 
