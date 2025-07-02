@@ -1,7 +1,7 @@
-from .views import test_view, rotate_camera
+from .views import rotate_camera_view, test_view
 from django.urls import path
 
 urlpatterns = [
   path('test/', test_view),
-  path('rotate-camera/', rotate_camera),
+  path('rotate-camera/', rotate_camera_view),
 ]
