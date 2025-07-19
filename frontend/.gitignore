@@ -1,4 +1,6 @@
+# custom 
 src/assets/
+vite.config.ts
 
 # Logs
 logs
